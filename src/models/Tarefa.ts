@@ -1,4 +1,3 @@
-import { Titulo } from '../components/Tarefa/styles'
 import * as enuns from '../utils/enuns/Tarefa'
 
 class Tarefa {
