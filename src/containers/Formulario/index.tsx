@@ -9,7 +9,6 @@ import { Campo } from '../../styles'
 import { Form, Opcoes, Opcao } from './styles'
 
 import * as enuns from '../../utils/enuns/Tarefa'
-import Tarefa from '../../models/Tarefa'
 
 const Formulario = () => {
   const dispatch = useDispatch()
@@ -21,14 +20,15 @@ const Formulario = () => {
 
   const cadastrarTarefa = (evento: FormEvent) => {
     evento.preventDefault()
-    const tarefaParaAdicionar = new Tarefa(
-      titulo,
-      prioridade,
-      enuns.Status.PENDENTE,
-      descricao,
-      9
+
+    dispatch(
+      cadastrar({
+        titulo,
+        prioridade,
+        descricao,
+        status: enuns.Status.PENDENTE
+      })
     )
-    dispatch(cadastrar(tarefaParaAdicionar))
     navigate('/')
   }
   return (
